@@ -49,11 +49,14 @@
                 </div>
             </nav>
         </header>
-        <body>
+  
+        <main class="l-main">
+            
+    <body>
         <div class="login">
 
             <form action="" class="login__form" method="post">
-                <h1 class="login__title">Connexion</h1>
+                <h1 class="login__title">Mot de passe oublié</h1>
 
                 <div class="login__content">
                     <div class="login__box">
@@ -68,11 +71,11 @@
                     <div class="login__box">
                         <i class="ri-lock-2-line login__icon"></i>
 
-                       
+                      
                         
                     </div>
                 </div>
-                </div>
+
 
                 <button type="submit" class="login__button">Récupération du mot de passe</button>
 
@@ -82,4 +85,5 @@
         <!--=============== MAIN JS ===============-->
         <script src="assets/js/main.js"></script>
     </body>
-        <main class="l-main">
+
+    </html>
