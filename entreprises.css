@@ -1,0 +1,141 @@
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  
+}
+
+.stats-table th, .stats-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.stats-table th {
+  background-color: #f2f2f2;
+}
+
+.stats-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.stats-table tbody tr:hover {
+  background-color: #ddd;
+}
+.table-container {
+  display: flex;
+  justify-content: space-around; /* Pour espacer les tableaux */
+}
+
+.stats-table {
+  width: calc(30% - 5px); /* Pour que les tableaux occupent chacun la moitié de la largeur */
+}
+
+.stats-table th, .stats-table td {
+    padding: 8px;
+    text-align: left;
+    border: 2px solid #ddd;
+    width: 2%; /* Ajustez cette valeur selon vos besoins */
+  }
+.center-table {
+    margin: 200px auto; /* Marge supérieure et inférieure de 100px, et centre horizontalement */
+    width: 50%; /* Largeur du tableau */
+    display: flex;
+  justify-content: space-around; /* Pour espacer les tableaux */
+  
+  }
+  
+  .stats-table-top th,
+  .stats-table-top td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .stats-table-top th {
+    background-color: #f2f2f2;
+    width: 25%; /* Largeur des cellules d'en-tête */
+  }
+  
+  .stats-table-top td {
+    width: 25%; /* Largeur des cellules de données */
+  }
+  .stats-table-top {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .stats-table-top th,
+  .stats-table-top td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .stats-table-top th {
+    background-color: #f2f2f2;
+  }
+  
+  .stats-table-top tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .stats-table-top tbody tr:hover {
+    background-color: #ddd;
+  }
+  .button-gestion {
+    display: inline-block; /* Rend le bouton en ligne avec d'autres éléments mais permet le padding/margin (contrairement à `display: inline`). */
+    background-color: var(--primary-100); /* Définit la couleur de fond du bouton en utilisant une variable CSS pour la couleur. `--primary-100` est probablement défini ailleurs dans le CSS. */
+    color: #fff; /* Définit la couleur du texte à blanc. */
+    padding: 3rem 3rem; /* Ajoute un espace à l'intérieur du bouton autour du texte (haut/bas: 0.75rem, gauche/droite: 1rem). */
+    border-radius: 0.5rem; /* Arrondit les coins du bouton pour un look moderne (0.5rem de rayon). */
+    transition: 0.3s; /* Applique une transition douce pour tous les changements de propriété sur le bouton (comme :hover*/
+  border-color: transparent;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  align-self:LEFT ;
+  padding: 10px;
+  }
+  
+.button-gestion {
+    background-color: var(--primary-100); /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 15px 30px; /* Augmente le padding pour un bouton plus grand */
+    font-size: 18px; /* Augmente la taille du texte */
+    border-radius: 10px; /* Bords plus arrondis */
+    border: none; /* Aucune bordure */
+    cursor: pointer; /* Change le curseur en pointeur */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+    display: block; /* Affiche le bouton comme un bloc */
+    margin: 20px auto; /* Centrer le bouton avec une marge automatique et un peu d'espace au-dessus et en dessous */
+    text-align: center; /* Centre le texte à l'intérieur du bouton */
+}
+/* Centre le formulaire sur la page */
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Ajustez selon le besoin */
+}
+
+/* Style additionnel pour le formulaire lui-même, pour un meilleur rendu */
+.form-tri {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espace entre les éléments du formulaire */
+  margin-top: 60px;
+}
+
+/* Vous pouvez ajuster le style du bouton si nécessaire */
+.form-tri input[type="submit"] {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #3498db;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.form-tri input[type="submit"]:hover {
+  background-color: #2980b9;
+}
