@@ -1,5 +1,5 @@
 <?php require_once 'config.php'; ?>
-<?php include 'authAdmin.php'; ?>
+<?php include 'authEns.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
