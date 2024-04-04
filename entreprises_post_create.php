@@ -24,7 +24,7 @@ $nom_entreprise= trim(strip_tags($postData['nom_entreprise']));
 $logo_entreprise = trim(strip_tags($postData['logo_entreprise']));
 $secteur_activite = $postData['secteur_activite'];
 $adresse_entreprise = trim(strip_tags($postData['adresse_entreprise']));
-$ville_entreprise = trim(strip_tags($postData['ville_entreprise']));
+$ville_entreprise = $postData['ville_entreprise'];
 
 // Faire l'insertion en base
 $requetePiloteCreation = $mysqlClient->prepare('
