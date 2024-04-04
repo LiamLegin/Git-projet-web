@@ -109,7 +109,7 @@
                     <input type="password" id="password" name="password">
                 </div>
 
-                <button type="submit">Valider l'ajout</button>
+                <button type="submit" class="button-gestion">Valider l'ajout</button>
             </form>
         </div>
         <script>

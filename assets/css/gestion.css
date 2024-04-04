@@ -22,7 +22,7 @@ form input {
     border: 1px solid var(--primary-100);
 }
 
-select {
+select  {
     padding: 8px;
     border-radius: 5px;
     border: 1px solid var(--primary-100);
@@ -32,6 +32,100 @@ select {
     background-color: var(--bg-100);
     color: var(--text-100);
 }   
+
+option{
+    background-color: var(--bg-100);
+    color: var(--text-100);
+    border: var(--primary-100);
+}
+
+.select2-container--default .select2-selection--multiple {
+    background-color: var(--bg-100);
+    border:var(--primary-100);
+    border: var(--primary-100);
+}
+
+.select2-container--default.select2-container--open.select2-container--above .select2-selection--single, .select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple {
+    border-bottom-color: var(--primary-100);
+    border: var(--primary-100);
+}
+
+/* Styles pour les options Select2 */
+.select2-container--default .select2-results__option {
+    padding: 8px;
+    background-color: var(--bg-100);
+    color: var(--text-100);
+    border: var(--primary-100);
+}
+
+/* Style au survol pour les options Select2 */
+.select2-container--default .select2-results__option--highlighted {
+    background-color: var(--primary-100);
+    color: var(--text-100);
+    border: var(--primary-100);
+}
+
+/* Style au focus pour les options Select2 */
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selected {
+    background-color: var(--primary-200);
+    color: var(--text-100);
+    border: var(--primary-100);
+}
+
+select  {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-100);
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%; /* Réglez la largeur sur 100% pour s'adapter au conteneur parent */
+    background-color: var(--bg-100);
+    color: var(--text-100);
+}
+
+/* Styles pour le conteneur Select2 */
+.select2-container {
+    width: 100%; /* Réglez la largeur sur 100% pour s'adapter au conteneur parent */
+}
+
+/* Styles pour la sélection multiple */
+.select2-selection .select2-selection--multiple {
+    padding: 5px;
+    background-color: var(--bg-100);
+    border: 1px solid var(--primary-100);
+    border-radius: 5px;
+    width: 100%; /* Réglez la largeur sur 100% pour s'adapter au conteneur parent */
+}
+
+/* Styles pour les options sélectionnées */
+.select2-selection__choice {
+    background-color: var(--primary-200);
+    color: var(--text-100);
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+/* Styles pour les options Select2 */
+.select2-container--default .select2-results__option {
+    padding: 5px;
+    background-color: var(--bg-200);
+}
+
+/* Style au survol pour les options Select2 */
+.select2-container--default .select2-results__option--highlighted {
+    background-color: var(--bg-300);
+}
+
+/* Style au focus pour les options Select2 */
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selected {
+    background-color: var(--bg-100);
+}
+
+/* Style pour les options Select2 sélectionnées */
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: var(--primary-200);
+    color: #fff;
+}
 
 select:hover {
     cursor: pointer;

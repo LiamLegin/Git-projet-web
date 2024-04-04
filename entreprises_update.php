@@ -8,8 +8,8 @@
             <title>Modification d'entreprises</title>
             <link href="assets/css/styles.css" rel="stylesheet">
             <link href="assets/css/nav.css" rel="stylesheet">
-            <link href="assets/css/gestion.css" rel="stylesheet">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+            <link href="assets/css/gestion.css" rel="stylesheet">
         </head>
 
         
@@ -82,7 +82,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="button">Valider l'ajout</button>
+                    <button type="submit" class="button-gestion">Valider l'ajout</button>
                 </form>
             </div>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -82,7 +82,7 @@
 
         <br>
 
-        <button type="submit">Valider la suppression</button>
+        <button type="submit" class="button-gestion">Valider la suppression</button>
     </form>
 
     <script>

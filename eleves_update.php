@@ -151,7 +151,7 @@
                         <input type="password" id="password" name="password">
                     </div>
 
-                    <button type="submit">Valider la modification</button>
+                    <button type="submit" class="button-gestion">Valider la modification</button>
                 </form>
                 <br />
             </div>

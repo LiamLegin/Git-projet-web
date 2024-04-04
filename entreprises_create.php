@@ -75,7 +75,7 @@
                     </select>
                 </div>
 
-                <button type="submit" class="button">Valider l'ajout</button>
+                <button type="submit" class="button-gestion">Valider l'ajout</button>
             </form>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
