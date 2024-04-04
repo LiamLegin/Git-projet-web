@@ -149,7 +149,9 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </head>
   <body>
     <?php include 'header.php'; ?>
-    <button class="button-gestion" Onclick="window.location.href='stats.php'">Retour</button>
+    <div class="button-container">
+    <button class="button-gestion" Onclick="window.location.href='stats.php'"> Retour</button>
+        </div>
 <div class="table-tri-container">
   <div class="form-container-tri">
     <form action="" method="GET" class="form-tri">
