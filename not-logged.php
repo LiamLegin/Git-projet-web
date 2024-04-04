@@ -9,14 +9,12 @@
 
         <!--========== CSS ==========-->
         <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/forgot.css">
-    <link rel="stylesheet" href="assets/css/nav.css">
-
-        <!--========== JS ==========-->
-    <script src="assets/js/main.js" defer></script>
+        <link rel="stylesheet" href="assets/css/nav.css">
 
         <title>Stageo</title>
     </head>
+    
+        </style>
     <body>
 
         <!--========== SCROLL TOP ==========-->
@@ -26,5 +24,19 @@
 
         <!--========== HEADER ==========-->
         <?php require_once(__DIR__ . '/header.php'); ?>
-  
-        <main class="l-main">
+        <h1 class="login-redirect">Une erreur de connexion à été détéctée. Veuillez vous connecter <a href="login.php" class="login-redirect-link">ici</a>.</h1>
+        <image src="assets/img/unknown.png" class="login-redirect-img">
+        <!--========== FOOTER ==========-->
+        <?php require_once(__DIR__ . '/footer.php'); ?>
+
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="assets/js/main.js"></script>
+
+
+        
+    </body>
+</html>

@@ -1,4 +1,6 @@
 <?php
+include "config.php";
+include "auth.php";
 
 try {
     // Connexion à la base de données
@@ -9,7 +11,7 @@ try {
 }
 
 // Définition de l'ordre de tri par défaut
-$triVille = isset($_GET['triVille']) ? $_GET['triVille'] : 'asc';
+$triVille = isset($_GET['triVille']) ? $_GET['triVille'] : 'desc';
 
 // Requête SQL pour calculer le pourcentage d'étudiants présents dans chaque ville
 $sql = "SELECT 
@@ -34,7 +36,7 @@ $sql = "SELECT
 $sql .= " ORDER BY Pourcentage_Etudiants $triVille LIMIT 5";
 
 // Préparation de la requête
-$stmt = $pdo->prepare($sql);
+$stmt = $mysqlClient->prepare($sql);
 
 // Exécution de la requête
 $stmt->execute();
@@ -51,7 +53,7 @@ try {
   die('Erreur de connexion à la base de données : ' . $e->getMessage());
 }
 // Définition de l'ordre de tri par défaut
-$triSecteur = isset($_GET['triSecteur']) ? $_GET['triSecteur'] : 'asc';
+$triSecteur = isset($_GET['triSecteur']) ? $_GET['triSecteur'] : 'desc';
 
 // Requête SQL pour calculer le pourcentage d'étudiants présents dans chaque ville
 $sql = "SELECT 
@@ -140,59 +142,16 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!--========== CSS ==========-->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/stats.css">
     <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/etudiant.css">
- 
-    <style>
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 50px; /* Adjust this value as needed */
-      }
+    <link rel="stylesheet" href="assets/css/gestion.css">
+    <link rel="stylesheet" href="assets/css/stats.css">
 
-      .button {
-        padding: 10px 20px;
-        border-radius: 20px;
-        background-color: #3498db; /* Change the color as needed */
-        color: white;
-        font-size: 16px;
-        margin: 0 10px;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        transition: background-color 0.3s;
-      }
-
-      .button:hover {
-        background-color: #2980b9; /* Change the hover color as needed */
-      }
-    </style>
   </head>
   <body>
-     <!--========== HEADER ==========-->
-     <header class="l-header" id="header">
-        <nav class="nav bd-container">
-            <div class="nav_logo">
-              <a href="index.php"><img src="assets/img/stageo.png"></a>
-            </div>
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.php" class="nav__link ">Accueil</a></li>
-                    <li class="nav__item"><a href="about.php" class="nav__link">A propos</a></li>
-                    <li class="nav__item"><a href="stats.php" class="nav__link active-link">Stats</a></li>
-                    <li class="nav__item"><a href="offers.php" class="nav__link">Offres</a></li>
-                    <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
-                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
-                </ul>
-            </div>
-            <a href="login.php" class="nav__login">Se connecter</a>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
-    </header>
-    
+    <?php include 'header.php'; ?>
+    <div class="button-container">
+    <button class="button-gestion" Onclick="window.location.href='stats.php'"> Retour</button>
+        </div>
 <div class="table-tri-container">
   <div class="form-container-tri">
     <form action="" method="GET" class="form-tri">
@@ -314,5 +273,7 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </tbody>
   </table>
-<button class="button-gestion" Onclick="window.location.href='stats.php'">Retour</button>
+
+<?php include 'footer.php'; ?>
 </body>
+<script src="assets/js/main.js"></script>

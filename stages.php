@@ -1,15 +1,11 @@
 <?php
+include "config.php";
+include "auth.php";
 
-try {
-    // Connexion à la base de données
-    $pdo = new PDO('mysql:host=localhost;dbname=stageo;charset=utf8', 'root', '');
-} catch (PDOException $e) {
-    // En cas d'erreur de connexion, affichage d'un message d'erreur
-    die('Erreur de connexion à la base de données : ' . $e->getMessage());
-}
+
 
 // Définition de l'ordre de tri par défaut
-$triLocalite = isset($_GET['triLocalite']) ? $_GET['triLocalite'] : 'asc';
+$triLocalite = isset($_GET['triLocalite']) ? $_GET['triLocalite'] : 'desc';
 
 // Requête SQL pour calculer le pourcentage d'entreprises présentes dans chaque ville
 $sql = "SELECT 
@@ -33,8 +29,9 @@ $sql = "SELECT
 // Ajout de la clause ORDER BY pour le tri
 $sql .= " ORDER BY Pourcentage_Entreprises $triLocalite LIMIT 8";
 
+
 // Préparation de la requête
-$stmt = $pdo->prepare($sql);
+$stmt = $mysqlClient->prepare($sql);
 
 // Exécution de la requête
 $stmt->execute();
@@ -44,7 +41,7 @@ $pourcentages_entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 // Définition de l'ordre de tri par défaut
-$triCompetences = isset($_GET['triCompetences']) ? $_GET['triCompetences'] : 'asc';
+$triCompetences = isset($_GET['triCompetences']) ? $_GET['triCompetences'] : 'desc';
 
 // Requête SQL pour calculer le pourcentage de chaque compétence
 $sql = "SELECT 
@@ -67,25 +64,15 @@ $sql = "SELECT
 $sql .= " ORDER BY Pourcentage_Competence $triCompetences LIMIT 8";
 
 // Préparation de la requête
-$stmt = $pdo->prepare($sql);
+$stmt = $mysqlClient->prepare($sql);
 
 // Exécution de la requête
 $stmt->execute();
 $pourcentages_competences = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-
-
-try {
-  // Connexion à la base de données
-  $pdo = new PDO('mysql:host=localhost;dbname=stageo;charset=utf8', 'root', '');
-} catch (PDOException $e) {
-  // En cas d'erreur de connexion, affichage d'un message d'erreur
-  die('Erreur de connexion à la base de données : ' . $e->getMessage());
-}
-
 // Définition de l'ordre de tri par défaut
-$triannonce = isset($_GET['triannonce']) ? $_GET['triannonce'] : 'asc';
+$triannonce = isset($_GET['triannonce']) ? $_GET['triannonce'] : 'desc';
 
 // Récupération des termes de recherche
 $search_offre = isset($_GET['search_offre']) ? $_GET['search_offre'] : '';
@@ -110,7 +97,7 @@ $sql = "SELECT
 $sql .= " ORDER BY Durée $triannonce";
 
 // Préparation de la requête
-$stmt = $pdo->prepare($sql);
+$stmt = $mysqlClient->prepare($sql);
 
 // Liaison des paramètres de recherche
 $stmt->bindValue(':search_offre', "%$search_offre%", PDO::PARAM_STR);
@@ -135,58 +122,17 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!--========== CSS ==========-->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/stats.css">
     <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/stages.css">
-    <style>
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 50px; /* Adjust this value as needed */
-      }
-
-      .button {
-        padding: 10px 20px;
-        border-radius: 20px;
-        background-color: #3498db; /* Change the color as needed */
-        color: white;
-        font-size: 16px;
-        margin: 0 10px;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        transition: background-color 0.3s;
-      }
-
-      .button:hover {
-        background-color: #2980b9; /* Change the hover color as needed */
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/gestion.css">
+    <link rel="stylesheet" href="assets/css/stats.css">
+    
   </head>
   <body>
-     <!--========== HEADER ==========-->
-     <header class="l-header" id="header">
-        <nav class="nav bd-container">
-            <div class="nav_logo">
-              <a href="index.php"><img src="assets/img/stageo.png"></a>
-            </div>
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.php" class="nav__link ">Accueil</a></li>
-                    <li class="nav__item"><a href="about.php" class="nav__link">A propos</a></li>
-                    <li class="nav__item"><a href="stats.php" class="nav__link active-link">Stats</a></li>
-                    <li class="nav__item"><a href="offers.php" class="nav__link">Offres</a></li>
-                    <li class="nav__item"><a href="contact.php" class="nav__link">Contact</a></li>
-                    <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
-                </ul>
-            </div>
-            <a href="login.php" class="nav__login">Se connecter</a>
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
-    </header>
-
+  <?php include 'header.php'; ?>
+  <h1>Statistiques des stages</h1>
+  <div class="button-container">
+    <button class="button-gestion" Onclick="window.location.href='stats.php'"> Retour</button>
+        </div>
     <div class="form-container">
   <form action="" method="GET" class="form-tri">
   <input type="hidden" name="triLocalite" value="true">
@@ -199,13 +145,13 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </form>
 </div>
 
-<div class="table-container" style="margin-top: 100px;">
+<div class="table-container">
   <!--========== tableau localité ==========-->
   <table class="stats-table">
-  <caption style="font-size: 16px;">Tableau des Localité</caption>
+  <caption>Localisation des stages</caption>
     <thead>
       <tr>
-        <th>Localité</th>
+        <th>Ville</th>
         <th>Pourcentage</th>
       </tr>
     </thead>
@@ -279,7 +225,6 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <th>Nom </th>
         <th>Localité  </th>
         <th>Temps du stage  </th>
-        <th>Lien du stage </th>
 
       </tr>
     </thead>
@@ -294,5 +239,7 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
   </table>
 </div>
-<button class="button-gestion" Onclick="window.location.href='stats.php'"> Retour</button>
+
+<?php include 'footer.php'; ?>
 </body>
+<script src="assets/js/main.js"></script>

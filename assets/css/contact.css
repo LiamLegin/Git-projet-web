@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 1rem;
+}
+
+.form-horizontal {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les éléments du formulaire */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-100);
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.btn-primary {
+  background-color: var(--primary-100);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-200);
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
+}
+
+.page-header{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}

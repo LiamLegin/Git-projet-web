@@ -1,0 +1,606 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  --primary-100:#3bbfe7;
+  --primary-200:#30a0c2;
+  --primary-300:#206f87;
+  --accent-100:#FFA500;
+  --accent-200:#dd8900;
+  --text-100:#333333;
+  --text-200:#5c5c5c;
+  --bg-100:#F0F8FF;
+  --bg-200:#e6eef5;
+  --bg-300:#bdc5cc;
+    
+
+  /*========== Font ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes ==========*/
+  --mb-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 768px){
+  :root{
+    --biggest-font-size: 4rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*========== Variables mode sombre ==========*/
+body.dark-theme{
+  --primary-100:#FF6600;
+  --primary-200:#ff983f;
+  --primary-300:#ffffa1;
+  --accent-100:#F5F5F5;
+  --accent-200:#636262;
+  --text-100:#FFFFFF;
+  --text-200:#e0e0e0;
+  --bg-100:#1D1F21;
+  --bg-200:#2c2e30;
+  --bg-300:#444648;
+}
+/*========== BASE ==========*/
+*{
+  box-sizing: border-box;
+  transition: ease 0.2s;
+}
+::before,::after{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+/*========== Bouton mode ==========*/
+.change-theme{
+  position: absolute;
+  right: 1rem;
+  top: 1.8rem;
+  color: var(--text-200);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+body{
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--bg-100);
+  color: var(--text-100);
+  padding-top: var(--header-height);
+  line-height: 1.6;
+}
+
+h1,h2,h3,p,ul{
+  margin: 0;
+}
+
+ul{
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.logo {
+  width: 60px;
+  height: 40px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*========== CLASS CSS ==========*/
+.section{
+  padding: 4rem 0 2rem;
+}
+
+.section-title, .section-subtitle{
+  text-align: center;
+}
+
+.section-title{
+  font-size: var(--h1-font-size);
+  color: var(--primary-100);
+  margin-bottom: var(--mb-3);
+}
+
+.section-subtitle{
+  display: block;
+  color: var(--text-100);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-1);
+}
+
+/*========== LAYOUT ==========*/
+.bd-container{
+  max-width: 960px;
+  width: calc(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+.bd-grid{
+  display: grid;
+  gap: 1.5rem;
+}
+
+.l-header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--bg-100);
+}
+
+/*========== NAV ==========*/
+.nav {
+  max-width: 1024px;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo{
+  width: 100px;
+  height: 140px;
+}
+
+.nav_logo {
+  width: 60px;
+  height: 40px;
+  align-items: flex-start;
+}
+
+.nav__menu, .nav__login{
+  align-items: center;
+  margin: auto;
+}
+
+.nav .search-form{
+  background:var(--bg-100);
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  height: 4.5rem;
+  width:50rem;
+}
+
+.nav .search-form input{
+  height:100%;
+  width:100%;
+  background:none;
+  text-transform: none;
+  font-size: 1.5rem;
+  color:var(--text-100);
+  padding:1rem;
+}
+
+.nav .search-form label{
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  color:var(--text-100);
+  cursor: pointer;
+}
+
+.nav .search-form label:hover{
+  color:var(--orange);
+}
+
+.nav .icons div{
+  height:4.5rem;
+  width:4.5rem;
+  line-height:4.5rem;
+  font-size: 2rem;
+  border-radius: .5rem;
+  margin-left: .5rem;
+  background:var(--bg-100);
+  color:var(--text-200);
+  cursor: pointer;
+  text-align: center;
+}
+
+.nav .icons div:hover{
+  color:#fff;
+  background:var(--orange);
+}
+
+#search-btn{
+  display:none;
+}
+
+/* Style pour le message d'erreur */
+.error-message {
+  display: inline-block; /* Affiche comme un élément en ligne */
+  color: red;
+  font-weight: bold;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  text-align: center;
+  border: 2px solid red; /* Ajout d'une bordure de 2px */
+  padding: 5px; /* Ajout de rembourrage pour un meilleur espacement entre le texte et la bordure */
+  background-color: hsl(0, 100%, 75%);
+  position: absolute;
+  top: 10rem;
+  justify-self: center;
+  
+}
+
+
+
+@media screen and (max-width: 768px){
+  .nav__menu{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0 1rem;
+    text-align: center;
+    background-color: var(--bg-100);
+    box-shadow: 0 4px 4px rgba(0,0,0,.1);
+    border-radius: 0 0 1rem 1rem;
+    z-index: var(--z-fixed);
+  }
+}
+
+.nav__item{
+  margin-bottom: var(--mb-2);
+}
+
+
+
+.nav__link, .nav__logo, .nav__toggle, .nav__login{
+  color: var(--text-200);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+
+.nav__logo:hover{
+  color: var(--primary-100);
+}
+
+.nav__login:hover{
+  color: var(--primary-100);
+}
+
+
+
+.nav__link:hover{
+  color: var(--primary-100);
+}
+
+.nav__toggle{
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.show-menu{
+  top: var(--header-height);
+}
+
+
+.active-link{
+  color: var(--primary-100);
+}
+
+/* Change background header */
+.scroll-header{
+  box-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+
+/* Scroll top */
+.scrolltop{
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3rem;
+  background: var(--primary-100);
+  color: var(--accent-100);
+  border-radius: .4rem;
+  z-index: var(--z-tooltip);
+  visibility: hidden;
+}
+
+.scrolltop:hover{
+  background-color: var(--primary-200);
+  color: var(--accent-200);
+}
+
+.scrolltop__icon{
+  font-size: 1.8rem;
+  color: var(--bg-300);
+}
+
+/* Show scrolltop */
+.show-scroll{
+  visibility: visible;
+  bottom: 1.5rem;
+}
+
+/* Style du bouton du menu déroulant */
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/*========== Menu déroulant ==========*/
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  background-color: var(--bg-100);
+  color: var(--text-100);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--bg-300);
+  color: var(--primary-100);
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+
+/*========== Login error ==========*/
+
+.login-redirect{
+  text-align: center;
+  justify-content: center ;
+  align-items: center;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.login-redirect-link{
+  color: var(--text-100);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-redirect-link:hover{
+  color: var(--primary-100);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-redirect-img{
+  display: flex;
+  width: 100%;
+  height: 30rem;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+/*========== FOOTER ==========*/
+
+
+.footer__container{
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 2rem;
+}
+
+.footer__logo{
+  font-size: var(--h3-font-size);
+  color: var(--primary-100);
+  font-weight: var(--font-semi-bold);
+}
+
+.footer__description{
+  display: block;
+  font-size: var(--small-font-size);
+  margin: .25rem 0 var(--mb-3);
+}
+
+.footer__social{
+  font-size: 1.5rem;
+  color: var(--primary-100);
+  margin-right: var(--mb-2);
+}
+
+.footer__title{
+  font-size: var(--h2-font-size);
+  color: var(--primary-100);
+  margin-bottom: var(--mb-2);
+}
+
+.footer__link{
+  display: inline-block;
+  color: var(--text);
+  margin-bottom: var(--mb-1);
+}
+
+.footer__link:hover{
+  color: var(--primary-100);
+}
+
+.footer__copy{
+  text-align: center;
+  font-size: var(--small-font-size);
+  color: var(--text-100);
+  margin-top: 3.5rem;
+}
+
+.contact{
+  margin-top: 10rem;
+}
+
+.footer__content{
+  text-align: center;
+}
+
+/*========== MEDIA QUERIES ==========*/
+@media screen and (min-width: 576px){
+  .home__container,
+  .about__container,
+  .app__container{
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+  }
+
+  .about__data, .about__initial,
+  .app__data, .app__initial,
+  .contact__container, .contact__initial{
+    text-align: initial;
+  }
+
+  .about__img, .app__img{
+    width: 380px;
+    order: -1;
+  }
+
+  .contact__container{
+    grid-template-columns: 1.75fr 1fr;
+    align-items: center;
+  }
+  .contact__button{
+    justify-self: center;
+  }
+}
+
+@media screen and (min-width: 768px){
+  body{
+    margin: 0;
+  }
+
+  .section{
+    padding-top: 8rem;
+  }
+
+  .nav{
+    height: calc(var(--header-height) + 1.5rem);
+  }
+ 
+
+  .change-theme{
+    position: initial;
+    margin-left: var(--mb-2);
+  }
+
+  .home__container{
+    height: 100vh;
+    justify-items: center;
+  }
+
+  .services__container,
+  .menu__container{
+    margin-top: var(--mb-6);
+  }
+
+  .menu__container, .cat__container{
+    grid-template-columns: repeat(3, 210px);
+    column-gap: 4rem;
+  }
+  .menu__content, .signup__content{
+    padding: 1.5rem;
+  }
+  .menu__img, .signup__img{
+    width: 130px;
+  }
+
+  .app__store{
+    margin: 0 var(--mb-1) 0 0;
+  }
+}
+
+@media screen and (min-width: 960px){
+  .bd-container{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home__img{
+    width: 500px;
+  }
+
+  .about__container,
+  .app__container{
+    column-gap: 7rem;
+  }
+}
+
+/* For tall screens on mobiles and desktop*/
+@media screen and (min-height: 721px) {
+    .home__container {
+        height: 640px;
+    }
+}
+
+::-webkit-scrollbar{
+  width: 15px;
+}
+
+::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: var(--primary-100);
+  border-radius: 30px;
+}

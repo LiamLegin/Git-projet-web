@@ -1,0 +1,145 @@
+/*========== NAV ==========*/
+.nav {
+    max-width: 1024px;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+  
+  .nav_logo {
+    max-height: var(--header-height); 
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+
+  .nav_logo img {
+    
+      max-width: 100%;
+      max-height: 100%;
+
+    
+  }
+
+  .nav__menu, .nav__login{
+    align-items: center;
+    margin: auto;
+  }
+  
+  .nav .search-form{
+    background:var(--bg-100);
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    height: 4.5rem;
+    width:50rem;
+  }
+  
+  .nav .search-form input{
+    height:100%;
+    width:100%;
+    background:none;
+    text-transform: none;
+    font-size: 1.5rem;
+    color:var(--text-100);
+    padding:1rem;
+  }
+  
+  .nav .search-form label{
+    font-size: 2rem;
+    margin-right: 1.5rem;
+    color:var(--text-100);
+    cursor: pointer;
+  }
+  
+  .nav .search-form label:hover{
+    color:var(--orange);
+  }
+  
+  .nav .icons div{
+    height:4.5rem;
+    width:4.5rem;
+    line-height:4.5rem;
+    font-size: 2rem;
+    border-radius: .5rem;
+    margin-left: .5rem;
+    background:var(--bg-100);
+    color:var(--text-100);
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .nav .icons div:hover{
+    color:#fff;
+    background:var(--orange);
+  }
+  
+  #search-btn{
+    display:none;
+  }
+  
+  @media screen and (max-width: 768px){
+    .nav__menu{
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 0 1rem;
+      text-align: center;
+      background-color: var(--bg-100);
+      transition: .4s;
+      box-shadow: 0 4px 4px rgba(0,0,0,.1);
+      border-radius: 0 0 1rem 1rem;
+      z-index: var(--z-fixed);
+    }
+  }
+  
+  .nav__item{
+    margin-bottom: var(--mb-2);
+  }
+  
+  
+  
+  .nav__link, .nav__logo, .nav__toggle, .nav__login{
+    color: var(--text-100);
+    font-weight: var(--font-medium);
+  }
+  
+  .nav__logo:hover,.nav__logo:hover, .nav__link:hover  {
+    color: var(--primary-100);
+  }
+  
+  
+  .nav__toggle{
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  
+  .show-menu{
+    top: var(--header-height);
+  }
+  
+  
+  .active-link{
+    color: var(--primary-100);
+  }
+
+  .nav .bd-container{
+    max-width: 960px;
+    width: calc(100% - 2rem);
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+  }
+
+  .nav__list{
+    display: flex;
+  }
+  .nav__item{
+    margin-left: var(--mb-5);
+    margin-bottom: 0;
+  }
+  .nav__toggle{
+    display: none;
+  }

@@ -1,0 +1,116 @@
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+}
+
+form, table {
+    width: 40%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: var(--bg-200);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: var(--bg-100);
+    color: var(--text-100);
+    border: 1px solid var(--primary-100);
+}
+
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-100);
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 200px;
+    background-color: var(--bg-100);
+    color: var(--text-100);
+}   
+
+select:hover {
+    cursor: pointer;
+}
+
+table {
+    border: 1px solid var(--accent-100);
+}
+
+th, td {
+    border: 1px solid var(--primary-100);
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--bg-100);
+}
+
+tr:nth-child(even) {
+    background-color: var(--primary-200);
+}
+
+tr:hover {
+    background-color: var(--primary-100);
+}
+
+tr:nth-child(even):hover{
+    background-color: var(--primary-100);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.button-container {
+    text-align: center;
+    
+}
+
+.button-gestion {
+    display: inline-block;
+    background-color: var(--primary-100);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border-color: transparent;
+    margin-top: 1rem;
+    align-self: center;
+    margin: 1rem;
+  }
+  
+  .button-gestion:hover {
+    background-color: var(--primary-200);
+    cursor: pointer;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Styles pour les champs de formulaire */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+
+/* Styles pour les messages d'erreur */
+.error-message {
+    color: #ff0000;
+    margin-bottom: 10px;
+}
