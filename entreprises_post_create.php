@@ -27,7 +27,7 @@ $adresse_entreprise = trim(strip_tags($postData['adresse_entreprise']));
 $ville_entreprise = $postData['ville_entreprise'];
 
 // Faire l'insertion en base
-$requetePiloteCreation = $mysqlClient->prepare('
+$requeteEntrepriseCreation = $mysqlClient->prepare('
     START TRANSACTION;
     
     INSERT INTO entreprise (nom_entreprise, logo_entreprise)
