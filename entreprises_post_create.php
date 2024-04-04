@@ -38,7 +38,7 @@ $requetePiloteCreation = $mysqlClient->prepare('
     VALUES (@id_entreprise, :secteurActivite);
 
     INSERT INTO adresse (nom_rue, id_entreprise, id_ville)
-    VALUES (:nomRue, @id_entreprise, :id_ville);
+    VALUES (:adresseEntreprise, @id_entreprise, :villeEntreprise);
 
     COMMIT;
 ');
@@ -47,8 +47,8 @@ $requetePiloteCreation->execute([
     'nomEntreprise' => $nom_entreprise,
     'logoEntreprise' => $logo_entreprise,
     'secteurActivite' => $secteur_activite,
-    'nomRue' => $adresse_entreprise,
-    'id_ville' => $ville_entreprise,
+    'adresseEntreprise' => $adresse_entreprise,
+    'villeEntreprise' => $ville_entreprise,
 ]);
 
 header('Location: gestionEntreprises.php');
