@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Page de la BDD - Édition de pilote</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div>
+            <h1>Mettre à jour un pilote</h1>
+            <form action="pilotes_post_update.php" method="POST" id="editForm">
+                <div>
+                    <label for="id_enseignant">Entrez l'identifiant de l'enseignant à modifier</label>
+                    <input type="number" id="id_enseignant" name="id_enseignant">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="nom_enseignant">Nom:</label>
+                    <input type="text" id="nom_enseignant" name="nom_enseignant">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="prenom_enseignant">Prénom:</label>
+                    <input type="text" id="prenom_enseignant" name="prenom_enseignant">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="tel">Téléphone:</label>
+                    <input type="tel" id="tel" name="tel">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password">
+                </div>
+
+                <br>
+
+                <button type="submit">Valider la modification</button>
+            </form>
+            <br />
+        </div>
+
+        <script>
+            document.getElementById('id_enseignant').addEventListener('change', function() {
+                var idEnseignant = this.value;
+        
+                // Envoyer une requête AJAX pour récupérer les informations de l'enseignant
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'fetch_enseignant_info.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var enseignantInfo = JSON.parse(xhr.responseText);
+                            // Mettre à jour les champs du formulaire avec les informations récupérées
+                            document.getElementById('nom_enseignant').value = enseignantInfo.nom_enseignant;
+                            document.getElementById('prenom_enseignant').value = enseignantInfo.prenom_enseignant;
+                            document.getElementById('email').value = enseignantInfo.email;
+                            document.getElementById('tel').value = enseignantInfo.telephone_enseignant;
+                            document.getElementById('password').value = ""; // Reset du champ mot de passe
+                        } else {
+                            console.error('Erreur lors de la récupération des informations de l\'enseignant.');
+                        }
+                    }
+                };
+                xhr.send('id_enseignant=' + idEnseignant);
+            });
+        </script>
+        
+    </body>
+</html>

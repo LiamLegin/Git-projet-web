@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Titre du document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <p>Saisissez une adresse électronique:</p>
+      <input id='email'>
+      <button type='submit' id='validate'>Validate!</button>
+    </form>
+    <h2 id='result'></h2>
+    <script>
+      function validateEmail(email) {
+        var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        return re.test(email);
+      }
+      function validate() {
+        var $result = $("#result");
+        var email = $("#email").val();
+        $result.text("");
+      
+        if (validateEmail(email)) {
+          $result.text(email + " is valid");
+          $result.css("color", "blue");
+        } else {
+          $result.text(email + " is not valid");
+          $result.css("color", "red");
+        }
+        return false;
+      }
+      $("#validate").on("click", validate);
+    </script>
+  </body>
+</html>
