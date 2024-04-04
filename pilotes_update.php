@@ -152,7 +152,6 @@
 
                 // Écouter les changements dans le champ ID de l'enseignant
                 document.getElementById('id_enseignant').addEventListener('input', fetchEnseignantInfo);
-            </script>
         </script>
         <script src="assets/js/main.js"></script>
     </body>
