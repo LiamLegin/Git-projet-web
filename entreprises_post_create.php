@@ -43,7 +43,7 @@ $requetePiloteCreation = $mysqlClient->prepare('
     COMMIT;
 ');
 
-$requetePiloteCreation->execute([
+$requeteEntrepriseCreation->execute([
     'nomEntreprise' => $nom_entreprise,
     'logoEntreprise' => $logo_entreprise,
     'secteurActivite' => $secteur_activite,
