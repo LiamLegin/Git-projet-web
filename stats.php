@@ -74,6 +74,7 @@
     
                     <img src="assets/img/stat.png" alt="" class="home__img">
                 </div>
+                
             </section>
   </body>
 </html>
