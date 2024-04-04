@@ -24,7 +24,7 @@
             </div>
             <form action="pilotes_post_update.php" method="POST">
                 <div>
-                    <label for="id_enseignant">Numéro d'identification de l'enseignant•e que vous voulez modifier</label><br>
+                    <label for="id_enseignant">Numéro d'identification de l'enseignant•e que vous voulez modifier</label>
                     <input type="number" id="id_enseignant" name="id_enseignant">
                 </div>
 
@@ -45,7 +45,7 @@
                 <br>
 
                 <div>
-                    <label for="promo_enseignant">Nouvelle promo gérée par l'enseignant•e (s'il en a une)</label><br>    
+                    <label for="promo_enseignant">Nouvelle promo gérée par l'enseignant•e (s'il en a une)</label>   
                     <select id="promo_enseignant" name="promo_enseignant">
                         <option value="">Aucune promotion</option>
                         <?php
@@ -74,7 +74,7 @@
                 <br>
 
                 <div>
-                    <label for="campus_enseignant">Nouveau campus où se trouve l'enseignant•e</label><br>
+                    <label for="campus_enseignant">Nouveau campus où se trouve l'enseignant•e</label>
                     <select id="campus_enseignant" name="campus_enseignant">
                         <option value="" selected>Pas de changement de campus</option>
                         <?php
@@ -90,7 +90,7 @@
                 <br>
 
                 <div>
-                    <label for="tel_enseignant">Numéro de téléphone de l'enseignant•e</label><br>
+                    <label for="tel_enseignant">Numéro de téléphone de l'enseignant•e</label>
                     <input type="tel" id="tel_enseignant" name="tel_enseignant">
                 </div>
 
@@ -123,6 +123,35 @@
                     datesPilotage.style.display = 'none';
                 }
             });
+                // Fonction pour récupérer les informations de l'enseignant via AJAX
+                function fetchEnseignantInfo() {
+                    // Récupérer l'ID de l'enseignant depuis le champ de saisie
+                    var id_enseignant = document.getElementById('id_enseignant').value;
+
+                    // Effectuer une requête AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'fetch_enseignant_info.php');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            // Parsez la réponse JSON
+                            var enseignantInfo = JSON.parse(xhr.responseText);
+                            // Remplir les champs du formulaire avec les données de l'enseignant
+                            document.getElementById('nom_enseignant').value = enseignantInfo.nom_enseignant || "Non associé";
+                            document.getElementById('prenom_enseignant').value = enseignantInfo.prenom_enseignant || "Non associé";
+                            document.getElementById('tel_enseignant').value = enseignantInfo.telephone_enseignant || "Non associé";
+                            document.getElementById('email').value = enseignantInfo.email || "Non associé";
+                        } else {
+                            // Gérer les erreurs de requête
+                            console.error('Erreur lors de la récupération des informations de l\'enseignant');
+                        }
+                    };
+                    // Envoyer l'ID de l'enseignant dans le corps de la requête
+                    xhr.send('id_enseignant=' + encodeURIComponent(id_enseignant));
+                }
+
+                // Écouter les changements dans le champ ID de l'enseignant
+                document.getElementById('id_enseignant').addEventListener('input', fetchEnseignantInfo);
         </script>
         <script src="assets/js/main.js"></script>
     </body>
