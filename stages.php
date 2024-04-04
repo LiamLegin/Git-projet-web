@@ -9,7 +9,7 @@ try {
 }
 
 // Définition de l'ordre de tri par défaut
-$tri = isset($_GET['tri']) ? $_GET['tri'] : 'asc';
+$triLocalite = isset($_GET['triLocalite']) ? $_GET['triLocalite'] : 'asc';
 
 // Requête SQL pour calculer le pourcentage d'entreprises présentes dans chaque ville
 $sql = "SELECT 
@@ -31,7 +31,7 @@ $sql = "SELECT
             ville.nom_ville";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Pourcentage_Entreprises $tri LIMIT 8";
+$sql .= " ORDER BY Pourcentage_Entreprises $triLocalite LIMIT 8";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -39,6 +39,12 @@ $stmt = $pdo->prepare($sql);
 // Exécution de la requête
 $stmt->execute();
 $pourcentages_entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+// Définition de l'ordre de tri par défaut
+$triCompetences = isset($_GET['triCompetences']) ? $_GET['triCompetences'] : 'asc';
 
 // Requête SQL pour calculer le pourcentage de chaque compétence
 $sql = "SELECT 
@@ -58,7 +64,7 @@ $sql = "SELECT
             competence.nom_competence";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Pourcentage_Competence $tri LIMIT 8";
+$sql .= " ORDER BY Pourcentage_Competence $triCompetences LIMIT 8";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -79,7 +85,7 @@ try {
 }
 
 // Définition de l'ordre de tri par défaut
-$tri = isset($_GET['tri']) ? $_GET['tri'] : 'asc';
+$triannonce = isset($_GET['triannonce']) ? $_GET['triannonce'] : 'asc';
 
 // Récupération des termes de recherche
 $search_offre = isset($_GET['search_offre']) ? $_GET['search_offre'] : '';
@@ -101,7 +107,7 @@ $sql = "SELECT
           AND (ville.nom_ville LIKE :search_ville OR :search_ville = '')";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Durée $tri";
+$sql .= " ORDER BY Durée $triannonce";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -184,16 +190,14 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="form-container">
   <form action="" method="GET" class="form-tri">
   <input type="hidden" name="triLocalite" value="true">
-    <label for="tri">Trier par :</label>
-    <select name="tri" id="tri">
-        <option value="asc" <?php if ($tri === 'asc') echo 'selected'; ?>>Croissant</option>
-        <option value="desc" <?php if ($tri === 'desc') echo 'selected'; ?>>Décroissant</option>
+    <label for="triLocalite">Trier par :</label>
+    <select name="triLocalite" id="triLocalite">
+        <option value="asc" <?php if ($triLocalite === 'asc') echo 'selected'; ?>>Croissant</option>
+        <option value="desc" <?php if ($triLocalite === 'desc') echo 'selected'; ?>>Décroissant</option>
     </select>
     <input type="submit" value="Trier">
   </form>
 </div>
-
-
 
 <div class="table-container" style="margin-top: 100px;">
   <!--========== tableau localité ==========-->
@@ -215,6 +219,19 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
   </table>
 
+
+
+
+
+  <form action="" method="GET" class="form-tri">
+  <input type="hidden" name="triCompetences" value="true">
+    <label for="triCompetences">Trier par :</label>
+    <select name="triCompetences" id="triCompetences">
+        <option value="asc" <?php if ($triCompetences === 'asc') echo 'selected'; ?>>Croissant</option>
+        <option value="desc" <?php if ($triCompetences === 'desc') echo 'selected'; ?>>Décroissant</option>
+    </select>
+    <input type="submit" value="Trier">
+  </form>
   <!--========== tableau des compétences==========-->
   <table class="stats-table">
   <caption style="font-size: 16px;">Tableau des Compétences</caption>
@@ -243,10 +260,10 @@ $offres_stage = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <input type="text" id="search_offre" name="search_offre" value="<?php echo $search_offre; ?>">
     <label for="search_ville">Rechercher par ville :</label>
     <input type="text" id="search_ville" name="search_ville" value="<?php echo $search_ville; ?>">
-    <label for="tri">Trier par durée :</label>
-    <select name="tri" id="tri">
-        <option value="asc" <?php if ($tri === 'asc') echo 'selected'; ?>>Croissant</option>
-        <option value="desc" <?php if ($tri === 'desc') echo 'selected'; ?>>Décroissant</option>
+    <label for="triannonce">Trier par durée :</label>
+    <select name="triannonce" id="triannonce">
+        <option value="asc" <?php if ($triannonce === 'asc') echo 'selected'; ?>>Croissant</option>
+        <option value="desc" <?php if ($triannonce === 'desc') echo 'selected'; ?>>Décroissant</option>
     </select>
     <input type="submit" value="Rechercher et Trier">
   </form>

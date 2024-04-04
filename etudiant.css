@@ -1,0 +1,120 @@
+ .button-gestion {
+    display: inline-block; /* Rend le bouton en ligne avec d'autres éléments mais permet le padding/margin (contrairement à `display: inline`). */
+    background-color: var(--primary-100); /* Définit la couleur de fond du bouton en utilisant une variable CSS pour la couleur. `--primary-100` est probablement défini ailleurs dans le CSS. */
+    color: #fff; /* Définit la couleur du texte à blanc. */
+    padding: 3rem 3rem; /* Ajoute un espace à l'intérieur du bouton autour du texte (haut/bas: 0.75rem, gauche/droite: 1rem). */
+    border-radius: 0.5rem; /* Arrondit les coins du bouton pour un look moderne (0.5rem de rayon). */
+    transition: 0.3s; /* Applique une transition douce pour tous les changements de propriété sur le bouton (comme :hover*/
+  border-color: transparent;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  align-self:LEFT ;
+  padding: 10px;
+  }
+  
+.button-gestion {
+    background-color: var(--primary-100); /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 15px 30px; /* Augmente le padding pour un bouton plus grand */
+    font-size: 18px; /* Augmente la taille du texte */
+    border-radius: 10px; /* Bords plus arrondis */
+    border: none; /* Aucune bordure */
+    cursor: pointer; /* Change le curseur en pointeur */
+    transition: background-color 0.3s; /* Transition douce pour le survol */
+    display: block; /* Affiche le bouton comme un bloc */
+    margin: 20px auto; /* Centrer le bouton avec une marge automatique et un peu d'espace au-dessus et en dessous */
+    text-align: center; /* Centre le texte à l'intérieur du bouton */
+}
+
+/* CSS pour les tableaux */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+.stats-table caption {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+.stats-table th,
+.stats-table td {
+    padding: 8px; /* Réduire l'espace interne */
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    width: 25%; /* Ajuster la largeur des colonnes */
+  }
+  
+.stats-table th {
+    background-color: #f2f2f2;
+  }
+  
+.stats-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .stats-table-top {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-right: 200px; /* Ajoute une marge à droite pour l'espace */
+    margin-left: 200px; /* Ajoute une marge à gauche pour l'espace */
+}
+
+.stats-table-top caption {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center; /* Centrer le titre du tableau */
+}
+
+.stats-table-top th,
+.stats-table-top td {
+    padding: 10px; /* Augmenter légèrement l'espace interne */
+    text-align: center; /* Centrer le contenu des cellules */
+    border-bottom: 1px solid #ddd;
+    width: 25%; /* Ajuster la largeur des colonnes si nécessaire */
+}
+
+.stats-table-top th {
+    background-color: #f2f2f2;
+}
+
+.stats-table-top tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.table-container {
+    width: 30%;/* Pour s'assurer que les deux tableaux prennent environ la moitié de l'écran */
+    margin-right: 200px; /* Ajoute une marge à droite pour l'espace */
+    margin-left: 200px; /* Ajoute une marge à gauche pour l'espace */
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+  
+.table-tri-container {
+    display: flex;
+    justify-content: flex-start; /* Aligne les éléments à droite */
+  }
+  
+.form-container-tri {
+    margin-top: 5px;
+    margin-left: 20px; /* Ajoute une marge à gauche pour décaler le formulaire */
+  }

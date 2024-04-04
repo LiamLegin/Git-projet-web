@@ -9,7 +9,7 @@ try {
 }
 
 // Définition de l'ordre de tri par défaut
-$tri = isset($_GET['tri']) ? $_GET['tri'] : 'asc';
+$triVille = isset($_GET['triVille']) ? $_GET['triVille'] : 'asc';
 
 // Requête SQL pour calculer le pourcentage d'entreprises présentes dans chaque ville
 $sql = "SELECT 
@@ -31,7 +31,7 @@ $sql = "SELECT
             ville.nom_ville";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Pourcentage_Entreprises $tri LIMIT 5";
+$sql .= " ORDER BY Pourcentage_Entreprises $triVille LIMIT 5";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -40,25 +40,38 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $pourcentages_entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+
+try {
+  // Connexion à la base de données
+  $pdo = new PDO('mysql:host=localhost;dbname=stageo;charset=utf8', 'root', '');
+} catch (PDOException $e) {
+  // En cas d'erreur de connexion, affichage d'un message d'erreur
+  die('Erreur de connexion à la base de données : ' . $e->getMessage());
+}
+// Définition de l'ordre de tri par défaut
+$triSecteur = isset($_GET['triSecteur']) ? $_GET['triSecteur'] : 'asc';
+
 // Requête SQL pour calculer le pourcentage de chaque secteur d'activité
 $sql = "SELECT 
-            secteur_activite.nom_secteur_activite AS Secteur_Activité,
-            COUNT(*) * 100 / total_secteurs.total AS Pourcentage_Secteur
-        FROM 
-            secteur_activite
-        LEFT JOIN 
-            posseder ON secteur_activite.id_secteur_activite = posseder.id_secteur_activite
-        CROSS JOIN (
-            SELECT 
-                COUNT(*) AS total
-            FROM 
-                secteur_activite
-        ) AS total_secteurs
-        GROUP BY 
-            secteur_activite.nom_secteur_activite";
+          secteur_activite.nom_secteur_activite AS Secteur_Activité,
+          COUNT(*) * 100 / total_secteurs.total AS Pourcentage_Secteur
+      FROM 
+          secteur_activite
+      LEFT JOIN 
+          posseder ON secteur_activite.id_secteur_activite = posseder.id_secteur_activite
+      CROSS JOIN (
+          SELECT 
+              COUNT(*) AS total
+          FROM 
+              secteur_activite
+      ) AS total_secteurs
+      GROUP BY 
+          secteur_activite.nom_secteur_activite";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Pourcentage_Secteur $tri LIMIT 5";
+$sql .= " ORDER BY Pourcentage_Secteur $triSecteur limit 5";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -66,6 +79,7 @@ $stmt = $pdo->prepare($sql);
 // Exécution de la requête
 $stmt->execute();
 $pourcentages_secteurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 
 
@@ -79,7 +93,7 @@ try {
 }
 
 // Définition de l'ordre de tri par défaut
-$tri = isset($_GET['tri']) ? $_GET['tri'] : 'desc';
+$triEntreprise = isset($_GET['triEntreprise']) ? $_GET['triEntreprise'] : 'desc';
 
 // Récupération des termes de recherche
 $search_entreprise = isset($_GET['search_entreprise']) ? $_GET['search_entreprise'] : '';
@@ -107,7 +121,7 @@ $sql = "SELECT
       GROUP BY 
           entreprise.nom_entreprise
       ORDER BY 
-          note_totale $tri";
+          note_totale $triEntreprise";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -119,6 +133,7 @@ $stmt->bindValue(':search_ville', "%$search_ville%", PDO::PARAM_STR);
 // Exécution de la requête
 $stmt->execute();
 $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -186,13 +201,13 @@ $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </header>
 
-    <div class="form-container">
+<div class="form-container">
   <form action="" method="GET" class="form-tri">
   <input type="hidden" name="triLocalite" value="true">
-    <label for="tri">Trier par :</label>
-    <select name="tri" id="tri">
-        <option value="asc" <?php if ($tri === 'asc') echo 'selected'; ?>>Croissant</option>
-        <option value="desc" <?php if ($tri === 'desc') echo 'selected'; ?>>Décroissant</option>
+    <label for="triVille">Trier par :</label>
+    <select name="triVille" id="triVille">
+        <option value="asc" <?php if ($triVille === 'asc') echo 'selected'; ?>>Croissant</option>
+        <option value="desc" <?php if ($triVille === 'desc') echo 'selected'; ?>>Décroissant</option>
     </select>
     <input type="submit" value="Trier">
   </form>
@@ -220,7 +235,16 @@ $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </table>
 
 
-
+  <div class="form-container">
+    <form action="" method="GET">
+      <label for="triSecteur">Trier par :</label>
+      <select name="triSecteur" id="triSecteur">
+          <option value="asc" <?php if ($triSecteur === 'asc') echo 'selected'; ?>>Croissant</option>
+          <option value="desc" <?php if ($triSecteur === 'desc') echo 'selected'; ?>>Décroissant</option>
+      </select>
+      <input type="submit" value="Trier">
+    </form>
+  </div>
   <!--========== tableau secteur d'activité ==========-->
   <table class="stats-table">
   <caption style="font-size: 16px;">Tableau des Secteur d'Activité</caption>
@@ -247,10 +271,10 @@ $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <input type="text" id="search_entreprise" name="search_entreprise" value="<?php echo $search_entreprise; ?>">
     <label for="search_ville">Rechercher par ville :</label>
     <input type="text" id="search_ville" name="search_ville" value="<?php echo $search_ville; ?>">
-    <label for="tri">Trier par note totale :</label>
-    <select name="tri" id="tri">
-        <option value="asc" <?php if ($tri === 'asc') echo 'selected'; ?>>Croissant</option>
-        <option value="desc" <?php if ($tri === 'desc') echo 'selected'; ?>>Décroissant</option>
+    <label for="triEntreprise">Trier par note totale :</label>
+    <select name="triEntreprise" id="triEntreprise">
+        <option value="asc" <?php if ($triEntreprise === 'asc') echo 'selected'; ?>>Croissant</option>
+        <option value="desc" <?php if ($triEntreprise === 'desc') echo 'selected'; ?>>Décroissant</option>
     </select>
     <input type="submit" value="Rechercher et Trier">
 </form>

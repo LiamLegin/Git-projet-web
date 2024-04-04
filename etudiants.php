@@ -9,7 +9,7 @@ try {
 }
 
 // Définition de l'ordre de tri par défaut
-$tri = isset($_GET['tri']) ? $_GET['tri'] : 'asc';
+$triVille = isset($_GET['triVille']) ? $_GET['triVille'] : 'asc';
 
 // Requête SQL pour calculer le pourcentage d'étudiants présents dans chaque ville
 $sql = "SELECT 
@@ -31,7 +31,7 @@ $sql = "SELECT
             ville.nom_ville";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Pourcentage_Etudiants $tri LIMIT 5";
+$sql .= " ORDER BY Pourcentage_Etudiants $triVille LIMIT 5";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -41,8 +41,17 @@ $stmt->execute();
 $pourcentages_etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
+
+
+try {
+  // Connexion à la base de données
+  $pdo = new PDO('mysql:host=localhost;dbname=stageo;charset=utf8', 'root', '');
+} catch (PDOException $e) {
+  // En cas d'erreur de connexion, affichage d'un message d'erreur
+  die('Erreur de connexion à la base de données : ' . $e->getMessage());
+}
 // Définition de l'ordre de tri par défaut
-$tri = isset($_GET['tri']) ? $_GET['tri'] : 'asc';
+$triSecteur = isset($_GET['triSecteur']) ? $_GET['triSecteur'] : 'asc';
 
 // Requête SQL pour calculer le pourcentage d'étudiants présents dans chaque ville
 $sql = "SELECT 
@@ -66,7 +75,7 @@ $sql = "SELECT
         ville.nom_ville";
 
 // Ajout de la clause ORDER BY pour le tri
-$sql .= " ORDER BY Pourcentage_Promos $tri LIMIT 5";
+$sql .= " ORDER BY Pourcentage_Promos $triSecteur LIMIT 5";
 
 // Préparation de la requête
 $stmt = $pdo->prepare($sql);
@@ -74,6 +83,7 @@ $stmt = $pdo->prepare($sql);
 // Exécution de la requête
 $stmt->execute();
 $pourcentages_promos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 try {
   // Connexion à la base de données
@@ -132,8 +142,8 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/stats.css">
     <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/etudiants.css">
-
+    <link rel="stylesheet" href="assets/css/etudiant.css">
+ 
     <style>
       .button-container {
         display: flex;
@@ -182,20 +192,23 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </nav>
     </header>
-
-<div class="form-container-tri">
-  <form action="" method="GET" class="form-tri">
-    <input type="hidden" name="triLocalite" value="true">
-    <label for="tri">Trier par :</label>
-    <select name="tri" id="tri">
-        <option value="asc" <?php if ($tri === 'asc') echo 'selected'; ?>>Croissant</option>
-        <option value="desc" <?php if ($tri === 'desc') echo 'selected'; ?>>Décroissant</option>
-    </select>
-    <input type="submit" value="Trier">
-  </form>
+    
+<div class="table-tri-container">
+  <div class="form-container-tri">
+    <form action="" method="GET" class="form-tri">
+      <input type="hidden" name="triLocalite" value="true">
+      <label for="triVille">Trier par :</label>
+      <select name="triVille" id="triVille">
+          <option value="asc" <?php if ($triVille === 'asc') echo 'selected'; ?>>Croissant</option>
+          <option value="desc" <?php if ($triVille === 'desc') echo 'selected'; ?>>Décroissant</option>
+      </select>
+      <input type="submit" value="Trier">
+    </form>
+  </div>
 </div>
 
-<div class="table-container" style="margin-top: 100px;">
+<div class="flex-container">
+   <div class="table-container">
   <!--========== tableau pourcentage d'etudiants par ville  ==========-->
   <table class="stats-table">
   <caption style="font-size: 16px;">Pourcentage d'étudiants par ville</caption>
@@ -214,7 +227,25 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </tbody> 
   </table>
+  </div>
 
+
+
+  <div class="table-tri-container">
+    <div class="form-container-tri">
+      <form action="" method="GET" class="form-tri">
+        <input type="hidden" name="triLocalite" value="true">
+        <label for="triSecteur">Trier par :</label>
+        <select name="triSecteur" id="triSecteur">
+            <option value="asc" <?php if ($triSecteur === 'asc') echo 'selected'; ?>>Croissant</option>
+            <option value="desc" <?php if ($triSecteur === 'desc') echo 'selected'; ?>>Décroissant</option>
+        </select>
+        <input type="submit" value="Trier">
+      </form>
+    </div>
+</div>
+
+<div class="table-container">
   <!--========== tableau secteur d'activité ==========-->
   <table class="stats-table">
   <caption style="font-size: 16px;">Tableau des Secteur d'Activité</caption>
@@ -234,6 +265,7 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </tbody>
   </table>
 </div>
+</div>
 
 
 
@@ -243,6 +275,7 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <input type="text" id="search_nom" name="search_nom" value="<?php echo $search_nom; ?>">
     <label for="search_prenom">Rechercher par prénom de l'étudiant :</label>
     <input type="text" id="search_prenom" name="search_prenom" value="<?php echo $search_prenom; ?>">
+    
     <label for="triDate">Trier par :</label>
     <select name="triDate" id="triDate">
         <option value="Date_Candidature" <?php if ($triDate === 'Date_Candidature') echo 'selected'; ?>>Date de candidature</option>
@@ -257,7 +290,7 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </form>
 
               <!-- Tableau top entreprises -->
-<div class="center-table" style="margin-top: 100px;">
+
   <table class="stats-table-top" >
   <caption style="font-size: 16px;">Tableau des étudiant pour un stage</caption>
 
@@ -281,6 +314,5 @@ $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </tbody>
   </table>
-</div>
 <button class="button-gestion" Onclick="window.location.href='stats.php'">Retour</button>
 </body>
