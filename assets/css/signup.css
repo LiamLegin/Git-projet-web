@@ -58,12 +58,12 @@ body {
     background-color: var(--primary-200);
   }
 
-  .cat__container {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 10rem;
+.cat__container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr)); /* Utilisation de CSS Grid pour créer des colonnes flexibles */
+  gap: 20px; /* Espace entre les offres */
 }
+
 
 @media screen and (max-width: 768px){
     .nav__menu{

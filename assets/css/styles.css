@@ -73,7 +73,7 @@ body.dark-theme{
 /*========== BASE ==========*/
 *{
   box-sizing: border-box;
-  transition: ease 0.5s;
+  transition: ease 0.2s;
 }
 ::before,::after{
   box-sizing: border-box;
@@ -82,7 +82,6 @@ body.dark-theme{
 html{
   scroll-behavior: smooth;
 }
-
 
 
 /*========== Bouton mode ==========*/

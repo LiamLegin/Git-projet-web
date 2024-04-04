@@ -119,7 +119,7 @@ $total_pages = ceil($total_offres / $offres_par_page);
                     <h2><?php echo $offre['Nom_Offre_Stage']; ?></h2>
                     <p>Entreprise: <?php echo $offre['Nom_Entreprise']; ?></p>
                     <p>Ville: <?php echo $offre['Ville']; ?></p>
-                    <a href="detail_offre.php?id=<?php echo $offre['id_offre_stage']; ?>">Voir en détail</a>
+                    <a href="detail_offre.php?id=<?php echo $offre['id_offre_stage']; ?>"><button>Voir en détail</button></a>
 
                 </div>
             <?php endforeach; ?>

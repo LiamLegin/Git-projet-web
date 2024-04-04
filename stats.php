@@ -1,4 +1,7 @@
-<?php require_once 'auth.php'; ?>
+<?php include "auth.php";
+      include "config.php";
+       ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,19 +15,29 @@
 
     <!--========== CSS ==========-->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/stats.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/nav.css">
-
-    <!--========== JS ==========-->
-    <script src="assets/js/main.js" defer></script>
-
-
+    </style>
   </head>
   <body>
      <!--========== HEADER ==========-->
-     <?php require_once(__DIR__ . '/header.php');
-           require_once(__DIR__ . '/footer.php')      
-      ?>
+    <?php include 'header.php'; ?>
 
-
-    <main class="l-main">
+    <section class="home " id="home">
+                <div class="home__container bd-container bd-grid">
+                    <div class="home__data">
+                        <h1 class="home__title">Statistiques</h1>
+                        
+                        <a href="entreprises.php" class="button">Entreprises</a>
+                        <a href="stages.php" class="button">Stages</a>
+                        <a href="etudiants.php" class="button">Etudiants</a>
+                    </div>
+    
+                    <img src="assets/img/stats.jpg" alt="Représentation graphique de statistiques" class="home__img">
+                </div>
+                
+            </section>
+            <?php include "footer.php";?>
+  </body>
+  <script src="assets/js/main.js"></script>
+</html>

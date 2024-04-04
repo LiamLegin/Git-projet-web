@@ -51,6 +51,13 @@
                     <a href="gestionStages.php"><button class="button"> Créer ou modifier un stage</button></a>
                 </div>
             </div>
+            <div class="signup">
+                <div class="signup__content">
+                    <img src="assets/img/logos.png" alt="" class="signup_img">
+                    <h3 class="signup__cat">Entreprises</h3>
+                    <a href="gestionEntreprises.php"><button class="button"> Créer ou modifier une entreprise</button></a>
+                </div>
+            </div>
         <?php endif; ?>
     </div>
 
