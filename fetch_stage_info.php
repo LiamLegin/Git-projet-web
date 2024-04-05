@@ -13,6 +13,7 @@ if (isset($_POST['id_offre_stage'])) {
         FROM offre_stage
         INNER JOIN administrateur ON offre_stage.id_administrateur = administrateur.id_administrateur
         INNER JOIN exiger ON offre_stage.id_offre_stage = exiger.id_offre_stage
+        INNER JOIN entreprise ON offre_stage.id_entreprise = entreprise.id_entreprise
         WHERE offre_stage.id_offre_stage = :id_offre_stage;
     ');
     $fetchQuery->execute(['id_offre_stage' => $id_offre_stage]);
